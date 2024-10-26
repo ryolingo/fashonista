@@ -1,16 +1,17 @@
 'use client'; // クライアントコンポーネントとして指定
 
 import { useState } from 'react';
-import SearchForm from '../../components/SearchForm';
-import GoogleImageGrid from '../../components/GoogleImageGrid';
+import SearchForm from './components/SearchForm';
+import GoogleImageGrid from './components/GoogleImageGrid';
 import { useFetchWeather } from '../../utils/useFetchWeather';
-import WeatherUI from '../../components/WeatherUI';
-import KeywordGenerator from '../../components/keywordGenerator';
-import WeatherTimeline from '../../components/WetherTimline'; // タイムラインのインポート
+
+import KeywordGenerator from './components/keywordGenerator';
+import WeatherTimeline from './components/WetherTimline'; // タイムラインのインポート
 import Header from '@/components/header'; // Headerのインポート
 import Link from 'next/link'; // Linkのインポート
 import { cn } from '@/lib/utils'; // ユーティリティ関数のインポート
 import { buttonVariants } from '@/components/ui/button'; // ボタンスタイルのインポート
+import WeatherUI from './components/WeatherUI';
 
 const Home = () => {
    const [searchTerm, setSearchTerm] = useState('');
@@ -50,8 +51,8 @@ const Home = () => {
                />
             </div>
             {weatherData && (
-               <div className='container mt-8'>
-                  <h2 className='text-2xl mb-4'>Today's Weather Timeline</h2>
+               <div className='container ml-15  mt-8'>
+                  <h2 className='text-2xl ml-20 font-extrabold mb-4'>Today's Weather Timeline</h2>
                   <WeatherTimeline weatherData={weatherData} /> {/* タイムラインで天気情報を表示 */}
                </div>
             )}
@@ -72,4 +73,3 @@ const Home = () => {
 };
 
 export default Home;
-
