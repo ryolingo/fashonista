@@ -1,16 +1,26 @@
-import Link from 'next/link';
+'use client'; // クライアントコンポーネントとして指定
 
-export default function Home() {
+import { useState } from 'react';
+import SearchForm from '../../components/SearchForm';
+import GoogleImageGrid from '../../components/GoogleImageGrid';
+
+const Home = () => {
+   const [searchTerm, setSearchTerm] = useState('');
+
+   // 検索キーワードを設定する関数
+   const handleSearchSubmit = (term: string) => {
+      setSearchTerm(term);
+   };
+
    return (
-      <div className=' mt-20 flex justify-center'>
-         <div className=''>
-            <div className='grid gap-6 text-center'>
-               <h1 className='text-2xl font-extrabold'>Home Page</h1>
-               <Link href={'/login'} className='border rounded-md bg-blue-200 hover:bg-blue-300'>
-                  ログイン
-               </Link>
-            </div>
+      <div className='container mx-auto p-4'>
+         <h1 className='text-2xl mb-4'>Google画像検索</h1>
+         <SearchForm onSubmit={handleSearchSubmit} /> {/* onSubmitを正しく渡す */}
+         <div className='mt-8'>
+            <GoogleImageGrid searchTerm={searchTerm} />
          </div>
       </div>
    );
-}
+};
+
+export default Home;
