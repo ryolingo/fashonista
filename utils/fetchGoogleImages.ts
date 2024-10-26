@@ -4,7 +4,7 @@ export const fetchGoogleImages = async (searchTerm: string) => {
     const searchEngineId = '82cbec9e0ed5a4dd7'; // CSEで取得したSearch Engine ID
   
     const response = await fetch(
-      `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(searchTerm)}&cx=${searchEngineId}&searchType=image&key=${apiKey}`
+      `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(searchTerm)}&cx=${searchEngineId}&searchType=image&siteSearch=pinterest.com&key=${apiKey}`
     );
   
     if (!response.ok) {
