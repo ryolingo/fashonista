@@ -1,4 +1,4 @@
-"use client"; // クライアントコンポーネントとして指定
+'use client'; // クライアントコンポーネントとして指定
 
 import { useState } from 'react';
 import SearchForm from '../../components/SearchForm';
