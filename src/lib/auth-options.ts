@@ -1,6 +1,7 @@
 import { FirestoreAdapter } from '@auth/firebase-adapter';
 import Google from 'next-auth/providers/google';
 import { NextAuthOptions } from 'next-auth';
+import { firestore } from './firestore';
 
 export const authOptions: NextAuthOptions = {
    providers: [
@@ -9,7 +10,7 @@ export const authOptions: NextAuthOptions = {
          clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
       }),
    ],
-   adapter: FirestoreAdapter(),
+   adapter: FirestoreAdapter(firestore),
    pages: {
       signIn: '/login',
    },
