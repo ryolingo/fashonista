@@ -1,4 +1,3 @@
-// components/GoogleImageGrid.tsx
 import { useState, useEffect } from 'react';
 import { fetchGoogleImages } from '../utils/fetchGoogleImages';
 
@@ -24,10 +23,10 @@ const GoogleImageGrid = ({ searchTerm }: { searchTerm: string }) => {
   }
 
   return (
-    <div className="grid grid-cols-3 gap-4">
+    <div className="flex justify-between bg-black p-4">
       {images.map((image) => (
-        <div key={image.link} className="shadow-lg rounded">
-          <img src={image.link} alt={image.title} className="w-full h-auto rounded" />
+        <div key={image.link} className="w-1/3 bg-gray-200 rounded-lg overflow-hidden mx-2">
+          <img src={image.link} alt={image.title} className="w-full h-full object-cover" />
         </div>
       ))}
     </div>
