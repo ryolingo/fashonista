@@ -1,17 +1,18 @@
-// components/SearchForm.tsx
-"use client";
+"use client"; // クライアントコンポーネントとして指定
 
 import { useState } from 'react';
 
-const SearchForm = () => {
+type SearchFormProps = {
+  onSubmit: (term: string) => void;
+};
+
+const SearchForm = ({ onSubmit }: SearchFormProps) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchTerm.trim()) {
-      // Google画像検索のURLにリダイレクト
-      const googleImageSearchUrl = `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(searchTerm)}`;
-      window.location.href = googleImageSearchUrl;
+      onSubmit(searchTerm); // ここでonSubmitを呼び出す
     }
   };
 
