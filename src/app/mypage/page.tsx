@@ -1,4 +1,4 @@
-import LogoutButton from '@/components/button';
+import LogoutButton from '@/components/Logoutbutton';
 import { getCurrentUser } from '@/lib/session';
 import { signOut } from 'next-auth/react';
 import Image from 'next/image';
