@@ -50,7 +50,6 @@ export default function MainDisplay() {
                <GoogleImageGrid searchTerm={searchTerm} />
             </div>
             <div>
-               <h1>Welcome to Fashionista!</h1>
                <KeywordGenerator />
             </div>
          </div>
