@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+
 export const useFetchWeather = (location: string) => {
    const [weatherData, setWeatherData] = useState<any>(null);
    const [loading, setLoading] = useState<boolean>(true);
@@ -6,7 +7,7 @@ export const useFetchWeather = (location: string) => {
    useEffect(() => {
       const fetchWeather = async () => {
          try {
-            const response = await fetch(`/api/weather?location=${location}`);
+      const response = await fetch(`/api/weather?location=${location}`);
             const data = await response.json();
             if (!response.ok) {
                setError('Error fetching weather data');
