@@ -1,7 +1,7 @@
 import LogoutButton from '@/components/Logoutbutton';
 import { getCurrentUser } from '@/lib/session';
 import { redirect } from 'next/navigation';
-import MainDisplay from '../components/Main-display';
+import MainDisplay from '@/components/Main-display';
 import Header from '@/components/header';
 import DisplayAvator from '@/components/display-avator';
 

@@ -31,7 +31,7 @@ export default function UserDropdown({ name, email, avatarUrl }: UserDropdownPro
    return (
       <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
          <DropdownMenuTrigger asChild>
-            <Button variant='ghost' className='relative h-8 w-8 rounded-full'>
+            <Button variant='ghost' className='relative h-8 w-8 rounded-full mr-4'>
                <Avatar className='h-8 w-8'>
                   <AvatarImage src={avatarUrl} alt={name ?? 'ユーザーアバター'} />
                   <AvatarFallback>{name?.[0] ?? 'G'}</AvatarFallback>
