@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import axios from 'axios';
 
 const KeywordGenerator = () => {
@@ -78,14 +77,14 @@ const KeywordGenerator = () => {
       <div className="w-full max-w-4xl mt-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {keywords.map((keyword, index) => (
-            <Card key={index} className="border border-gray-200 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader className="bg-blue-600 text-white p-2 rounded-t-lg">
+            <div key={index} className="border border-gray-200 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+              <div className="bg-blue-600 text-white p-2 rounded-t-lg">
                 <h2 className="text-lg font-semibold">{`キーワード ${index + 1}`}</h2>
-              </CardHeader>
-              <CardContent className="p-4">
+              </div>
+              <div className="p-4">
                 <p className="text-gray-900">{keyword}</p>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           ))}
         </div>
       </div>
