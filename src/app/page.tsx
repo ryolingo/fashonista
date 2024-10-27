@@ -6,12 +6,15 @@ import GoogleImageGrid from '../../components/GoogleImageGrid';
 import { useFetchWeather } from '../../utils/useFetchWeather';
 import WeatherUI from '../../components/WeatherUI';
 import KeywordGenerator from '../../components/keywordGenerator';
+import ClothingCardList from './firestore/components/ClothingCardList'
+import { getClothingItems } from '../lib/firestore';
 
-const Home = () => {
+
+const Home = async () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [location, setLocation] = useState('');  // ロケーションの管理
   const { weatherData, loading, error } = useFetchWeather(location);
-   
+  const clothingItems = await getClothingItems();
 
   // 検索キーワードを設定する関数
   const handleSearchSubmit = (term: string) => {
@@ -44,7 +47,9 @@ const Home = () => {
         <KeywordGenerator />
       </div>
     </div>
-    </div>
+
+    <div><ClothingCardList items={clothingItems} /></div>
+  </div>
    
   );
 };
