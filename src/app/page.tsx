@@ -2,7 +2,7 @@ import Header from '@/components/header'; // Headerのインポート
 import Link from 'next/link'; // Linkのインポート
 import { cn } from '@/lib/utils'; // ユーティリティ関数のインポート
 import { buttonVariants } from '@/components/ui/button'; // ボタンスタイルのインポート
-import MainDisplay from './components/Main-display';
+import MainDisplay from '@/components/Main-display';
 
 const Home = () => {
    return (
