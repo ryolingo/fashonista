@@ -44,7 +44,7 @@ export default function MainDisplay() {
             </div>
          )}
          <div className='container mx-auto p-4'>
-            <h1 className='text-2xl mb-4'>Google画像検索</h1>
+            <h1 className='text-2xl font-extrabold mb-4'>何を着よう？</h1>
             <SearchForm onSubmit={handleSearchSubmit} /> {/* onSubmitを正しく渡す */}
             <div className='mt-8'>
                <GoogleImageGrid searchTerm={searchTerm} />

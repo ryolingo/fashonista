@@ -43,7 +43,7 @@ export default function Component({
 
          {currentWeather && (
             <div className='mt-8 bg-card text-card-foreground p-6 rounded-lg shadow-lg'>
-               <h2 className='text-2xl font-semibold mb-4'>Current Weather</h2>
+               <h2 className='text-2xl font-semibold mb-4'>Todays Wether</h2>
                <div className='grid grid-cols-2 gap-4'>
                   <div className='col-span-2 sm:col-span-1'>
                      <p className='text-4xl font-bold'>
