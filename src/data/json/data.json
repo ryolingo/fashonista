@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1", 
+    "name": "T-Shirt",
+    "brand": "Brand A",
+    "color": "Red",
+    "size": "M",
+    "price": 2000,
+    "dateAdded": "2024-01-01"
+  },
+  {
+    "id": "2",  
+    "name": "Jeans",
+    "brand": "Brand B",
+    "color": "Blue",
+    "size": "L",
+    "price": 5000,
+    "dateAdded": "2024-02-01"
+  }
+]
