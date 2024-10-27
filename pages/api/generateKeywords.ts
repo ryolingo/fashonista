@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { generateKeywords } from './geminiClient';
+import { generateKeywords } from '../../utils/geminiClient';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
@@ -13,7 +13,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const keywords = await generateKeywords(userPreference);
-    res.status(200).json({ keywords });
+    if (keywords.length > 0) {
+      res.status(200).json({ keywords });
+    } else {
+      res.status(200).json({ keywords: [] });
+    }
   } catch (error) {
     res.status(500).json({ error: 'Failed to generate keywords' });
   }
