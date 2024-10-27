@@ -1,11 +1,11 @@
 'use client';
 import { useState } from 'react';
-import { useFetchWeather } from '@/utils/useFetchWeather';
-import GoogleImageGrid from './GoogleImageGrid';
-import KeywordGenerator from './keywordGenerator';
-import SearchForm from './SearchForm';
-import WeatherUI from './WeatherUI';
-import WeatherTimeline from './WetherTimline';
+import { useFetchWeather } from '../../utils/useFetchWeather';
+import GoogleImageGrid from '../app/components/GoogleImageGrid';
+import KeywordGenerator from '../app/components/keywordGenerator';
+import SearchForm from '../app/components/SearchForm';
+import WeatherUI from '../app/components/WeatherUI';
+import WeatherTimeline from '../app/components/WetherTimline';
 
 export default function MainDisplay() {
    const [searchTerm, setSearchTerm] = useState('');
