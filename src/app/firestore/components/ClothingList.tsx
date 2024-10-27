@@ -4,13 +4,9 @@ import ClothingItem from './ClothingItem';
 
 interface ClothingListProps {
   items: {
-    id: string;
-    name: string;
-    brand: string;
-    color: string;
-    size: string;
-    price: number;
-    dateAdded: string;
+    id: string; // Firestore のドキュメント ID
+    word: string;
+    data: string;
   }[];
 }
 

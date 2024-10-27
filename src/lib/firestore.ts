@@ -1,16 +1,13 @@
 
 
+import { Timestamp } from 'firebase-admin/firestore';
 import db from './firebase'; // firebase.ts からインポート
 import { collection, getDocs } from 'firebase/firestore';
 
 export interface ClothingItem {
   id: string; // Firestore のドキュメント ID
-  name: string;
-  brand: string;
-  color: string;
-  size: string;
-  price: number;
-  dateAdded: string;
+  word: string;
+  data: string;
 }
 
 export const getClothingItems = async (): Promise<ClothingItem[]> => {

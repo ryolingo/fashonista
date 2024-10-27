@@ -3,25 +3,18 @@ import React from 'react';
 
 interface ClothingItemProps {
   item: {
-    id: string;
-    name: string;
-    brand: string;
-    color: string;
-    size: string;
-    price: number;
-    dateAdded: string;
+    id: string; // Firestore のドキュメント ID
+    word: string;
+    data: string;
   };
 }
 
 const ClothingItem: React.FC<ClothingItemProps> = ({ item }) => {
   return (
     <div style={styles.container}>
-      <h2 style={styles.title}>{item.name}</h2>
-      <p><strong>Brand:</strong> {item.brand}</p>
-      <p><strong>Color:</strong> {item.color}</p>
-      <p><strong>Size:</strong> {item.size}</p>
-      <p><strong>Price:</strong> ¥{item.price}</p>
-      <p><strong>Date Added:</strong> {item.dateAdded}</p>
+      <h2 style={styles.title}>{item.id}</h2>
+      <p><strong>日時</strong> {item.data}</p>
+      <p><strong>検索ワード</strong> {item.word}</p>
     </div>
   );
 };
