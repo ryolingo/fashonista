@@ -1,3 +1,11 @@
+// pages/index.tsx
+import ClothingList from './components/ClothingList';
+import { getClothingItems } from '../../lib/getClothingItems';
+
 export default function Home() {
-  return <div>happy</div>;
+  const clothingItems = getClothingItems();
+
+  return <ClothingList items={clothingItems} />;
 }
+
+
