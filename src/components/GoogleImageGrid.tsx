@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchGoogleImages } from '../../../utils/fetchGoogleImages';
+import { fetchGoogleImages } from '../utils/fetchGoogleImages';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import { Card } from '@/components/ui/card';
 type ImageType = {

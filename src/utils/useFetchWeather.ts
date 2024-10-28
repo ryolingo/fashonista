@@ -25,10 +25,6 @@ export const useFetchWeather = (location: string) => {
                return;
             }
 
-            // ログを追加してデータを確認
-            console.log('Full weather data:', data);
-            console.log('Current weather (list[0]):', data.list[0]);
-
             setCurrentWeather(data.list[0]); // 現在の天気をlist[0]から設定
             setWeatherData(data);
             setLoading(false);

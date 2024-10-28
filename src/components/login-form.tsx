@@ -9,7 +9,7 @@ export default function LoginForm() {
    const [loading, setLoading] = useState(false);
    const handleGoogleLogin = () => {
       setLoading(true);
-      signIn('google', { callbackUrl: '/mypage' });
+      signIn('google');
    };
    return (
       <div className='h-[500px] w-[300px] bg-white rounded-3xl'>

@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { useFetchWeather } from '@/utils/useFetchWeather';
+import { useFetchWeather } from '../utils/useFetchWeather';
 import GoogleImageGrid from './GoogleImageGrid';
 import KeywordGenerator from './keywordGenerator';
 import SearchForm from './SearchForm';
@@ -21,7 +21,6 @@ export default function MainDisplay() {
 
    // 検索ボタンが押されたときの動作
    const handleSearch = () => {
-      console.log('Search initiated for location', location);
       setFetchLocation(location); // fetchLocationの状態を更新
    };
    return (
@@ -50,7 +49,6 @@ export default function MainDisplay() {
                <GoogleImageGrid searchTerm={searchTerm} />
             </div>
             <div>
-               <h1>Welcome to Fashionista!</h1>
                <KeywordGenerator />
             </div>
          </div>

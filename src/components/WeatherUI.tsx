@@ -23,9 +23,9 @@ export default function Component({
    weatherData,
 }: WeatherUIProps) {
    return (
-      <div className='container ml-80 mx-auto p-4 max-w-3xl'>
+      <div className='container p-4 max-w-3xl'>
          <h1 className='text-4xl font-bold text-center mb-8 text-primary'>Weather Forecast</h1>
-         <div className='flex flex-col sm:flex-row gap-4 mb-8'>
+         <div className='flex flex-col sm:flex-row gap-4 mb-8 '>
             <input
                type='text'
                placeholder='Enter location'
