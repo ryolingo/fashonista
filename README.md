@@ -1,37 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fashionista
 
-## Getting Started
+Fashionista は、天気に基づいた適切な服装を提案する AI アプリケーションです。このアプリケーションは、Google Gemini を活用して天気に応じた最適なコーディネートを提案し、Google Search API で関連画像を表示します。また、ユーザー認証機能も備えています。
 
-First, run the development server:
+## デモ
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<!-- [デプロイ済みアプリケーションはこちらからアクセスできます]( <ここにデプロイしたURLを張り付ける> ) -->
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 製作者
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+-  [kondai24](https://github.com/kondai24)
+-  [ryolingo](https://github.com/ryolingo)
+-  [ahiru401066](https://github.com/ahiru401066)
+-  [MiinaDoi](https://github.com/MiinaDoi)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 機能概要
 
-## Learn More
+-  **天気情報取得**: 今日の天気情報を自動で取得し、現在の気候に適した服装を判断します。
+-  **服装提案**: Google Gemini を活用し、取得した天気情報をもとに、適切な服装を AI が提案します。
+-  **画像表示**: 提案された服装にマッチする画像を Google Search API で検索し、表示します。
+-  **ユーザー認証**: ログイン機能を実装し、ユーザーごとに服装提案をカスタマイズします。
 
-To learn more about Next.js, take a look at the following resources:
+## 使用技術
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# fashonista
+-  **Next.js**: React ベースのフレームワーク
+-  **Firebase**: 認証と Firestore データベースとして使用
+-  **Google Gemini**: AI を使った服装提案
+-  **Google Search API**: 提案服装の関連画像を表示

@@ -1,7 +1,7 @@
 import { FirestoreAdapter } from '@auth/firebase-adapter';
 import Google from 'next-auth/providers/google';
 import { NextAuthOptions } from 'next-auth';
-import { firestore } from './firestore';
+import { firestore } from './auth-firestore';
 
 export const authOptions: NextAuthOptions = {
    providers: [

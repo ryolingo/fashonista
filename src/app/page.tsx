@@ -3,6 +3,8 @@ import Link from 'next/link'; // Linkのインポート
 import { cn } from '@/lib/utils'; // ユーティリティ関数のインポート
 import { buttonVariants } from '@/components/ui/button'; // ボタンスタイルのインポート
 import MainDisplay from '@/components/Main-display';
+import { getClothingItems } from '@/lib/firestore';
+import { ClothingList } from '@/components/ClothingCardList';
 
 const Home = () => {
    return (
