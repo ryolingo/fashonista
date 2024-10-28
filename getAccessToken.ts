@@ -5,15 +5,13 @@ const path = require('path');
 const keyFilePath = path.resolve(__dirname, './keys/service-account-file.json');
 
 async function getAccessToken() {
-  const auth = new GoogleAuth({
-    keyFilename: keyFilePath,
-    scopes: ['https://www.googleapis.com/auth/cloud-platform'],
-  });
+   const auth = new GoogleAuth({
+      keyFilename: keyFilePath,
+      scopes: ['https://www.googleapis.com/auth/cloud-platform'],
+   });
 
-  const client = await auth.getClient();
-  const token = await client.getAccessToken();
-
-  console.log('Access Token:', token?.token);
+   const client = await auth.getClient();
+   const token = await client.getAccessToken();
 }
 
 getAccessToken().catch(console.error);
