@@ -4,12 +4,12 @@ Fashionista は、天気に基づいた適切な服装を提案する AI アプ�
 
 ## デモ
 
-<!-- [デプロイ済みアプリケーションはこちらからアクセスできます]( <ここにデプロイしたURLを張り付ける> ) -->
+[デプロイ済みアプリケーションはこちらからアクセスできます](https://fashonista-pi.vercel.app/)
 
 ## 製作者
 
--  [kondai24](https://github.com/kondai24)
 -  [ryolingo](https://github.com/ryolingo)
+-  [kondai24](https://github.com/kondai24)
 -  [ahiru401066](https://github.com/ahiru401066)
 -  [MiinaDoi](https://github.com/MiinaDoi)
 
