@@ -22,15 +22,22 @@ export default function Component({
    currentWeather,
    weatherData,
 }: WeatherUIProps) {
+   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (event.key === 'Enter') {
+         handleSearch();
+      }
+   };
+
    return (
       <div className='container p-4 max-w-3xl'>
          <h1 className='text-4xl font-bold text-center mb-8 text-primary'>Weather Forecast</h1>
-         <div className='flex flex-col sm:flex-row gap-4 mb-8 '>
+         <div className='flex flex-col sm:flex-row gap-4 mb-8'>
             <input
                type='text'
                placeholder='Enter location'
                value={location}
                onChange={(e) => setLocation(e.target.value)}
+               onKeyUp={handleKeyPress} // Enterキーで検索を実行
                className='flex-grow border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 rounded-md'
             />
             <button onClick={handleSearch} className={cn(buttonVariants())}>
@@ -43,7 +50,7 @@ export default function Component({
 
          {currentWeather && (
             <div className='mt-8 bg-card text-card-foreground p-6 rounded-lg shadow-lg'>
-               <h2 className='text-2xl font-semibold mb-4'>Todays Wether</h2>
+               <h2 className='text-2xl font-semibold mb-4'>Today's Weather</h2>
                <div className='grid grid-cols-2 gap-4'>
                   <div className='col-span-2 sm:col-span-1'>
                      <p className='text-4xl font-bold'>
