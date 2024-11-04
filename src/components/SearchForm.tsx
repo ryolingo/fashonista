@@ -1,4 +1,4 @@
-'use client2'; // クライアントコンポーネントとして指定
+'use client'; // クライアントコンポーネントとして指定
 
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -19,18 +19,20 @@ const SearchForm = ({ onSubmit }: SearchFormProps) => {
    };
 
    return (
-      <form onSubmit={handleSearch}>
-         <input
-            type='text'
-            placeholder='検索キーワードを入力'
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className='border px-4 py-2 rounded '
-         />
-         <button type='submit' className={cn(buttonVariants(), 'ml-7')}>
-            検索
-         </button>
-      </form>
+      <div className='flex justify-center'>
+         <form onSubmit={handleSearch} className='flex items-center w-1/2'>
+            <input
+               type='text'
+               placeholder='検索キーワードを入力'
+               value={searchTerm}
+               onChange={(e) => setSearchTerm(e.target.value)}
+               className='border px-4 py-2 rounded w-full'
+            />
+            <button type='submit' className={cn(buttonVariants(), 'ml-7 w-24')}>
+               検索
+            </button>
+         </form>
+      </div>
    );
 };
 

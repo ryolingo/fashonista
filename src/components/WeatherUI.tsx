@@ -2,11 +2,12 @@ import React from 'react';
 import { Cloud, Droplet, Wind } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
+import InputPrefecture from './input-prefecture';
 
 interface WeatherUIProps {
    location: string;
    setLocation: (location: string) => void;
-   handleSearch: () => void;
+   handleSearch: (Location: string) => void;
    loading: boolean;
    error: string | null;
    currentWeather: any;
@@ -22,27 +23,13 @@ export default function Component({
    currentWeather,
    weatherData,
 }: WeatherUIProps) {
-   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-      if (event.key === 'Enter') {
-         handleSearch();
-      }
-   };
-
    return (
-      <div className='container p-4 max-w-3xl'>
+      <div className='w-full'>
          <h1 className='text-4xl font-bold text-center mb-8 text-primary'>Weather Forecast</h1>
-         <div className='flex flex-col sm:flex-row gap-4 mb-8'>
-            <input
-               type='text'
-               placeholder='Enter location'
-               value={location}
-               onChange={(e) => setLocation(e.target.value)}
-               onKeyUp={handleKeyPress} // Enterキーで検索を実行
-               className='flex-grow border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 rounded-md'
-            />
-            <button onClick={handleSearch} className={cn(buttonVariants())}>
-               Search Weather
-            </button>
+         <div className='flex justify-center mb-8'>
+            <div className='flex flex-col w-1/2 justify-center items-center sm:flex-row gap-4 '>
+               <InputPrefecture handleSearch={handleSearch} />
+            </div>
          </div>
 
          {loading && <p className='text-center text-muted-foreground'>Loading...</p>}

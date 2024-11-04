@@ -59,7 +59,7 @@ const WeatherTimeline = ({ weatherData }: { weatherData: { list: WeatherData[] }
    const hourlyWeather = weatherData.list.slice(0, 8); // 24時間分のデータ
 
    return (
-      <ScrollArea className='w-full ml-20 whitespace-nowrap rounded-md border'>
+      <ScrollArea className='w-full whitespace-nowrap rounded-md border'>
          <div className='flex w-max space-x-4 p-4'>
             {hourlyWeather.map((weather, index) => {
                const hour = new Date(weather.dt_txt).getHours();
