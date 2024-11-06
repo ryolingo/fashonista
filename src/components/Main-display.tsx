@@ -6,7 +6,10 @@ import KeywordGenerator from './keywordGenerator';
 import SearchForm from './SearchForm';
 import WeatherUI from './WeatherUI';
 import WeatherTimeline from './WetherTimline';
+
 import Welcome from './Welcome';
+import InputPrefecture from './input-prefecture';
+
 
 export default function MainDisplay() {
    const [searchTerm, setSearchTerm] = useState('');
@@ -21,10 +24,11 @@ export default function MainDisplay() {
    };
 
    // 検索ボタンが押されたときの動作
-   const handleSearch = () => {
+   const handleSearch = (location: string) => {
       setFetchLocation(location); // fetchLocationの状態を更新
    };
    return (
+
       <div>
          <Welcome />
          <div className='container'>
@@ -59,6 +63,7 @@ export default function MainDisplay() {
             </div>
             <div className='mt-8'>
                <KeywordGenerator />
+
             </div>
          </div>
       </div>

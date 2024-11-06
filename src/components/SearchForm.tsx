@@ -1,4 +1,4 @@
-'use client2'; // クライアントコンポーネントとして指定
+'use client'; // クライアントコンポーネントとして指定
 
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -19,6 +19,7 @@ const SearchForm = ({ onSubmit }: SearchFormProps) => {
    };
 
    return (
+
       <form onSubmit={handleSearch}>
          <div className='flex justify-center gap-4 mb-8'>
             <input
@@ -33,6 +34,7 @@ const SearchForm = ({ onSubmit }: SearchFormProps) => {
             </button>
          </div>
       </form>
+
    );
 };
 
