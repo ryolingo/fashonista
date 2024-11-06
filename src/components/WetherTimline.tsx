@@ -54,13 +54,13 @@ const getBackgroundStyle = (hour: number) => {
 };
 
 const WeatherTimeline = ({ weatherData }: { weatherData: { list: WeatherData[] } }) => {
-   if (!weatherData) return <p>Loading...</p>;
+   if (!weatherData) return <p>読み込み中...</p>;
 
    const hourlyWeather = weatherData.list.slice(0, 8); // 24時間分のデータ
 
    return (
-      <ScrollArea className='w-full ml-20 whitespace-nowrap rounded-md border'>
-         <div className='flex w-max space-x-4 p-4'>
+      <ScrollArea className='w-full rounded-md border'>
+         <div className='flex justify-center space-x-4 p-4'>
             {hourlyWeather.map((weather, index) => {
                const hour = new Date(weather.dt_txt).getHours();
                const backgroundStyle = getBackgroundStyle(hour);

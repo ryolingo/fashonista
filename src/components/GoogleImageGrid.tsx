@@ -24,10 +24,13 @@ const GoogleImageGrid = ({ searchTerm }: { searchTerm: string }) => {
    }
 
    return (
-      <ScrollArea className='w-full h-100 overflow-x-auto overflow-y-hidden whitespace-nowrap rounded-md border'>
-         <div className='flex w-max h-80 space-x-4 bg-black py-1'>
+      <ScrollArea className='w-full h-[500px] overflow-x-auto overflow-y-hidden whitespace-nowrap rounded-md border'>
+         <div className='flex w-max h-[400px] space-x-6 py-2'>
             {images.map((image) => (
-               <Card key={image.link} className='w-1/3 bg-gray-200 rounded-lg overflow-hidden mx-2'>
+               <Card
+                  key={image.link}
+                  className='w-[300px] h-full bg-gray-800 rounded-lg overflow-hidden mx-3'
+               >
                   <img src={image.link} alt={image.title} className='w-full h-full object-cover' />
                </Card>
             ))}
