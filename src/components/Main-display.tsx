@@ -6,6 +6,7 @@ import KeywordGenerator from './keywordGenerator';
 import SearchForm from './SearchForm';
 import WeatherUI from './WeatherUI';
 import WeatherTimeline from './WetherTimline';
+import Welcome from './Welcome';
 
 export default function MainDisplay() {
    const [searchTerm, setSearchTerm] = useState('');
@@ -25,6 +26,7 @@ export default function MainDisplay() {
    };
    return (
       <div>
+         <Welcome />
          <div className='container'>
             <WeatherUI
                location={location}

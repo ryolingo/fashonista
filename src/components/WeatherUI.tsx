@@ -2,7 +2,6 @@ import React from 'react';
 import { Cloud, Droplet, Wind } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
-import Welcome from './Welcome';
 
 interface WeatherUIProps {
    location: string;
@@ -25,7 +24,6 @@ export default function Component({
 }: WeatherUIProps) {
    return (
       <div>
-         <Welcome />
          <div className='flex justify-center items-center w-full'>
             <div className='container p-4 max-w-3xl mx-auto'>
                <h2 className='text-4xl font-bold text-center mb-2 mt-10 text-primary'>
