@@ -6,7 +6,10 @@ import KeywordGenerator from './keywordGenerator';
 import SearchForm from './SearchForm';
 import WeatherUI from './WeatherUI';
 import WeatherTimeline from './WetherTimline';
+
+import Welcome from './Welcome';
 import InputPrefecture from './input-prefecture';
+
 
 export default function MainDisplay() {
    const [searchTerm, setSearchTerm] = useState('');
@@ -25,34 +28,42 @@ export default function MainDisplay() {
       setFetchLocation(location); // fetchLocationの状態を更新
    };
    return (
-      <div className='px-10 flex flex-col items-center mt-10'>
-         <div className='w-full max-w-5xl'>
-            <div className=''>
-               <WeatherUI
-                  location={location}
-                  setLocation={setLocation} // 場所を入力するための状態設定関数を渡す
-                  handleSearch={handleSearch} // 検索ボタンを押したときの動作
-                  loading={loading} // ローディング状態を渡す
-                  error={error} // エラー状態を渡す
-                  currentWeather={currentWeather} // 現在の天気データを渡す
-                  weatherData={weatherData} // 天気予報データを渡す
-               />
+
+      <div>
+         <Welcome />
+         <div className='container'>
+            <WeatherUI
+               location={location}
+               setLocation={setLocation} // 場所を入力するための状態設定関数を渡す
+               handleSearch={handleSearch} // 検索ボタンを押したときの動作
+               loading={loading} // ローディング状態を渡す
+               error={error} // エラー状態を渡す
+               currentWeather={currentWeather} // 現在の天気データを渡す
+               weatherData={weatherData} // 天気予報データを渡す
+            />
+         </div>
+         {weatherData && (
+            <div className='container mx-auto p-4 mt-8'>
+               <h2 className='text-2xl ml-20 font-extrabold mb-30'>今日の天気のタイムライン</h2>
+               <WeatherTimeline weatherData={weatherData} /> {/* タイムラインで天気情報を表示 */}
             </div>
-            {weatherData && (
-               <div className='mt-8'>
-                  <h2 className='text-2xl font-extrabold mb-4'>Today's Weather Timeline</h2>
-                  <WeatherTimeline weatherData={weatherData} /> {/* タイムラインで天気情報を表示 */}
+         )}
+         <div className='container p-4 pt-10 max-w-5xl mx-auto'>
+            <p className='text-lg text-center text-gray-500 mb-8'>
+               OK。次は気になる服を検索キーワードに入力してね。
+            </p>
+            <div className='flex items-center gap-4 mb-5'>
+               <h2 className='text-3xl font-bold text-primary mb-7 pl-60'>何を着よう？</h2>
+               <div className='flex items-center'>
+                  <SearchForm onSubmit={handleSearchSubmit} />
                </div>
-            )}
-            <div>
-               <h1 className='text-3xl font-extrabold mb-4 text-center'>何を着よう？</h1>
-               <SearchForm onSubmit={handleSearchSubmit} /> {/* onSubmitを正しく渡す */}
-               <div className='mt-8'>
-                  <GoogleImageGrid searchTerm={searchTerm} />
-               </div>
-               <div>
-                  <KeywordGenerator />
-               </div>
+            </div>
+            <div className='mt-8'>
+               <GoogleImageGrid searchTerm={searchTerm} />
+            </div>
+            <div className='mt-8'>
+               <KeywordGenerator />
+
             </div>
          </div>
       </div>
