@@ -1,3 +1,4 @@
+'use client';
 import Header from '@/components/header'; // Headerのインポート
 import Link from 'next/link'; // Linkのインポート
 import { cn } from '@/lib/utils'; // ユーティリティ関数のインポート
