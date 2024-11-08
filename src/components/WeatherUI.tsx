@@ -24,22 +24,19 @@ export default function Component({
    weatherData,
 }: WeatherUIProps) {
    return (
-
       <div>
          <div className='flex justify-center items-center w-full'>
-            <div className='container p-4 max-w-3xl mx-auto'>
-               <h2 className='text-4xl font-bold text-center mb-2 mt-10 text-primary'>
+            <div className='container p-4 max-w-3xl mt-6 mx-auto'>
+               <h2 className='text-4xl font-bold　 text-center mb-2 mt-10 text-primary'>
                   今日の天気を調べよう
                </h2>
-               
-              <div className='flex flex-col w-1/2 justify-center items-center sm:flex-row gap-4 '>
-               <InputPrefecture handleSearch={handleSearch} />
-            </div>
 
+               <div className='flex flex-col w-full justify-center items-center mt-7 sm:flex-row gap-4 '>
+                  <InputPrefecture handleSearch={handleSearch} />
+               </div>
 
                {loading && <p className='text-center text-muted-foreground'>読み込み中...</p>}
                {error && <p className='text-center text-destructive'>{error}</p>}
-
 
                {currentWeather && (
                   <div className='mt-8 bg-card text-card-foreground p-6 rounded-lg shadow-lg'>
@@ -63,7 +60,6 @@ export default function Component({
                               <span>風速: {currentWeather.wind.speed} m/s</span>
                            </div>
                         </div>
-
                      </div>
                   </div>
                )}
