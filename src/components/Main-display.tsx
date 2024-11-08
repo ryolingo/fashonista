@@ -25,6 +25,7 @@ export default function MainDisplay() {
    // 検索ワードを処理して保存する関数
 
    const handleSearchSubmit = async (term: string) => {
+      setSearchTerm(term);
       // ログインしているかどうかを確認
       if (!session) {
          console.log('ログインしていないため、データは保存されません。');
