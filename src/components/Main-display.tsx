@@ -33,12 +33,13 @@ export default function MainDisplay() {
       }
       try {
          // FirestoreのSearchTermコレクションへの参照を作成
-         const collectionRef = collection(db, 'SearchTerm');
-
+         const collectionRef = collection(db, 'clothingItems');
+         const date = new Date();
+         const formattedDate = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
          // addDocを使用して新しいドキュメントを作成
          await addDoc(collectionRef, {
             term,
-            timestamp: serverTimestamp(),
+            timestamp: formattedDate,
             user: session.user?.email || 'unknown', // ユーザー情報を追加（任意）
          });
          console.log('データを保存しました');

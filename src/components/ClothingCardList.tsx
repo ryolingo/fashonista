@@ -3,16 +3,17 @@ import React from 'react';
 import ClothingCard from './ClothingCard';
 
 interface ClothingItem {
-   id: string; // idは直接ここに書く
-   data: string;
-   word: string;
+   id: string;
+   term: string;
+   timestamp: string;
+   user: string;
 }
 
 interface ClothingListProps {
-   items: ClothingItem[];
+   items: ClothingItem[]; // propsとして受け取るアイテムリスト
 }
 
-export const ClothingList: React.FC<ClothingListProps> = ({ items }) => {
+const ClothingList: React.FC<ClothingListProps> = ({ items }) => {
    return (
       <div style={styles.container}>
          <h1>Clothing Items</h1>
@@ -25,6 +26,7 @@ export const ClothingList: React.FC<ClothingListProps> = ({ items }) => {
    );
 };
 
+// スタイルの定義
 const styles: { [key: string]: React.CSSProperties } = {
    container: {
       padding: '20px',
