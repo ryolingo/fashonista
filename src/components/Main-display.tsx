@@ -1,51 +1,73 @@
 'use client';
+
 import { useState } from 'react';
 import { useFetchWeather } from '../utils/useFetchWeather';
 import GoogleImageGrid from './GoogleImageGrid';
 import KeywordGenerator from './keywordGenerator';
 import SearchForm from './SearchForm';
 import WeatherUI from './WeatherUI';
-import WeatherTimeline from './WetherTimline';
-
 import Welcome from './Welcome';
-import InputPrefecture from './input-prefecture';
-
+import { useSession } from 'next-auth/react';
+import { addDoc, collection, doc, serverTimestamp, setDoc } from 'firebase/firestore';
+import db from '@/lib/firebase'; // Firebaseクライアント用設定をインポート
+import WeatherTimeline from './WetherTimline';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function MainDisplay() {
+   const [termId] = useState(uuidv4());
    const [searchTerm, setSearchTerm] = useState('');
-   const [location, setLocation] = useState(''); // ロケーションの管理
-   const [fetchLocation, setFetchLocation] = useState<string | null>(null); // fetchLocationを使用
+   const [location, setLocation] = useState('');
+   const [fetchLocation, setFetchLocation] = useState<string | null>(null);
    const { weatherData, loading, error } = useFetchWeather(fetchLocation || '');
-   const { currentWeather } = useFetchWeather(fetchLocation || ''); // 現在の天気データを取得
+   const { currentWeather } = useFetchWeather(fetchLocation || '');
+   const { data: session, status } = useSession();
 
-   // 検索キーワードを設定する関数
-   const handleSearchSubmit = (term: string) => {
-      setSearchTerm(term);
+   // 検索ワードを処理して保存する関数
+
+   const handleSearchSubmit = async (term: string) => {
+      // ログインしているかどうかを確認
+      if (!session) {
+         console.log('ログインしていないため、データは保存されません。');
+         return;
+      }
+      try {
+         // FirestoreのSearchTermコレクションへの参照を作成
+         const collectionRef = collection(db, 'SearchTerm');
+
+         // addDocを使用して新しいドキュメントを作成
+         await addDoc(collectionRef, {
+            term,
+            timestamp: serverTimestamp(),
+            user: session.user?.email || 'unknown', // ユーザー情報を追加（任意）
+         });
+         console.log('データを保存しました');
+      } catch (error) {
+         console.error('データの保存に失敗しました:', error);
+      }
    };
-
-   // 検索ボタンが押されたときの動作
+   // ロケーション検索
    const handleSearch = (location: string) => {
-      setFetchLocation(location); // fetchLocationの状態を更新
+      setFetchLocation(location);
    };
-   return (
 
+   return (
       <div>
          <Welcome />
          <div className='container'>
             <WeatherUI
                location={location}
-               setLocation={setLocation} // 場所を入力するための状態設定関数を渡す
-               handleSearch={handleSearch} // 検索ボタンを押したときの動作
-               loading={loading} // ローディング状態を渡す
-               error={error} // エラー状態を渡す
-               currentWeather={currentWeather} // 現在の天気データを渡す
-               weatherData={weatherData} // 天気予報データを渡す
+               setLocation={setLocation}
+               handleSearch={handleSearch}
+               loading={loading}
+               error={error}
+               currentWeather={currentWeather}
+               weatherData={weatherData}
             />
          </div>
          {weatherData && (
             <div className='container mx-auto p-4 mt-8'>
                <h2 className='text-2xl ml-20 font-extrabold mb-30'>今日の天気のタイムライン</h2>
-               <WeatherTimeline weatherData={weatherData} /> {/* タイムラインで天気情報を表示 */}
+               <WeatherTimeline weatherData={weatherData} />
             </div>
          )}
          <div className='container p-4 pt-10 max-w-5xl mx-auto'>
@@ -63,7 +85,6 @@ export default function MainDisplay() {
             </div>
             <div className='mt-8'>
                <KeywordGenerator />
-
             </div>
          </div>
       </div>
