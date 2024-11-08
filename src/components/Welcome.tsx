@@ -66,11 +66,17 @@ const Welcome = () => {
             }}
          >
             <div className='flex items-center justify-center w-full h-full bg-gray-300 bg-opacity-20 p-10'>
-               <div className='text-center max-w-screen-md mx-auto'>
-                  <h2 className='text-4xl lg:text-6xl font-extrabold text-white mb-4'>
-                     Fashionistaにようこそ
+               <div className='text-center max-w-screen-lg mx-auto pl-4'>
+                  <h2
+                     className='text-4xl lg:text-6xl font-extrabold text-white mb-4　whitespace-nowrap'
+                     style={{ textShadow: '0 0 2px rgba(0, 0, 0, 0.4)' }}
+                  >
+                     Fashonistaにようこそ
                   </h2>
-                  <h3 className='text-2xl sm:text-3xl font-light text-white mb-4'>
+                  <h3
+                     className='text-2xl sm:text-3xl font-light text-white mb-4 mt-3 drop-shadow-2xl'
+                     style={{ textShadow: '0 0 2px rgba(0, 0, 0, 0.5)' }}
+                  >
                      Fashionistaで天気からコーディネートを探そう
                   </h3>
                   {error && <p className='text-red-500'>{error}</p>}
