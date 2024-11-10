@@ -2,24 +2,38 @@
 
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { useState } from 'react';
+import { ImageType } from '@/types/GoogleImages';
+import axios from 'axios';
+import { Dispatch, SetStateAction, useState } from 'react';
 
-type SearchFormProps = {
-   onSubmit: (term: string) => void;
-};
+interface SearchFormProps {
+   setError: Dispatch<SetStateAction<string | null>>;
+   setImages: Dispatch<SetStateAction<ImageType[]>>;
+}
 
-const SearchForm = ({ onSubmit }: SearchFormProps) => {
+const SearchForm = ({ setError, setImages }: SearchFormProps) => {
    const [searchTerm, setSearchTerm] = useState('');
 
-   const handleSearch = (e: React.FormEvent) => {
+   const handleSearch = async (e: React.FormEvent) => {
       e.preventDefault();
       if (searchTerm.trim()) {
-         onSubmit(searchTerm); // ここでonSubmitを呼び出す
+         // 画像の取得
+         try {
+            console.log('searchTerm:', searchTerm);
+            const response = await axios.get(`/api/google/Images/${searchTerm}`);
+            setImages(response.data.items);
+         } catch (error) {
+            setError('画像の取得に失敗しました。');
+         }
+
+         // データベースに保存
+         try {
+            axios.post('/api/clothingItem', { term: searchTerm });
+         } catch (error) {}
       }
    };
 
    return (
-
       <form onSubmit={handleSearch}>
          <div className='flex justify-center gap-4 mb-8'>
             <input
@@ -34,7 +48,6 @@ const SearchForm = ({ onSubmit }: SearchFormProps) => {
             </button>
          </div>
       </form>
-
    );
 };
 

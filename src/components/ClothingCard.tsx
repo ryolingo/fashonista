@@ -3,22 +3,26 @@ import React from 'react';
 
 interface ClothingCardProps {
    item: {
+      timestamp: { seconds: number; nanoseconds: number };
       term: string;
-      timestamp: string;
-      user: string;
    };
 }
 
+const DatefromtimestamptoString = (timestamp: { seconds: number; nanoseconds: number }): string => {
+   const date = new Date(timestamp.seconds * 1000); // 秒をミリ秒に変換
+   return date.toLocaleDateString();
+};
+
 const ClothingCard: React.FC<ClothingCardProps> = ({ item }) => {
+   console.log(item.timestamp);
    return (
       <div style={cardStyles}>
-         <p>{item.timestamp}</p>
+         <p>{DatefromtimestamptoString(item.timestamp)}</p>
          <h2>{item.term}</h2>
          {/* 画像やその他の情報をここに追加 */}
       </div>
    );
 };
-console.log('ClothingCard.tsx');
 
 const cardStyles: React.CSSProperties = {
    border: '1px solid #ccc',

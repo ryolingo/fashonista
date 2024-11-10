@@ -4,11 +4,21 @@ import { fetchUnsplashImages } from '@/utils/fetchUnsplashImage';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { FaArrowDown } from 'react-icons/fa'; // Importing an icon library
 
+const textShadow = { textShadow: '0 0 2px rgba(0, 0, 0, 0.5)' };
+
 const Welcome = () => {
    const [backgroundImage, setBackgroundImage] = useState<string | null>(null);
    const [weather, setWeather] = useState<any>(null);
    const [time, setTime] = useState<string | null>(null);
    const [error, setError] = useState<string | null>(null);
+
+   // 天気の検索の部分までスクロール
+   const handleScroll = () => {
+      const targetElement = document.getElementById('search');
+      if (targetElement) {
+         targetElement.scrollIntoView({ behavior: 'smooth' });
+      }
+   };
 
    useEffect(() => {
       navigator.geolocation.getCurrentPosition(
@@ -36,11 +46,12 @@ const Welcome = () => {
                   searchTerm = 'rainy sky';
                }
 
-               const images = await fetchUnsplashImages(searchTerm);
-               if (images.length > 0) {
-                  const randomImage = images[Math.floor(Math.random() * images.length)];
-                  setBackgroundImage(randomImage.urls.full);
-               }
+               // const images = await fetchUnsplashImages(searchTerm);
+               // if (images.length > 0) {
+               //    const randomImage = images[Math.floor(Math.random() * images.length)];
+               //    setBackgroundImage(randomImage.urls.full);
+               // }
+               setBackgroundImage('/images/weather/rainy/rainy1.jpg');
             } catch (error) {
                console.error('Error fetching weather or background image:', error);
                setError('Failed to fetch weather or image data.');
@@ -68,31 +79,46 @@ const Welcome = () => {
             <div className='flex items-center justify-center w-full h-full bg-gray-300 bg-opacity-20 p-10'>
                <div className='text-center max-w-screen-lg mx-auto pl-4'>
                   <h2
-                     className='text-4xl lg:text-6xl font-extrabold text-white mb-4　whitespace-nowrap'
-                     style={{ textShadow: '0 0 2px rgba(0, 0, 0, 0.4)' }}
+                     className='text-4xl lg:text-6xl font-extrabold text-white mb-4 whitespace-nowrap drop-shadow-2xl'
+                     style={textShadow}
                   >
                      Fashonistaにようこそ
                   </h2>
                   <h3
                      className='text-2xl sm:text-3xl font-light text-white mb-4 mt-3 drop-shadow-2xl'
-                     style={{ textShadow: '0 0 2px rgba(0, 0, 0, 0.5)' }}
+                     style={textShadow}
                   >
                      Fashionistaで天気からコーディネートを探そう
                   </h3>
                   {error && <p className='text-red-500'>{error}</p>}
                   {weather && (
-                     <div className='bg-white bg-opacity-20 rounded-lg p-6 md:p-8 shadow-lg mt-20 mx-auto w-full max-w-xs'>
+                     <div className='bg-gray-200 bg-opacity-40 rounded-lg p-6 md:p-8 shadow-lg mt-20 mx-auto w-full max-w-xs'>
                         {/* Center the card and adjust its size */}
-                        <p className='text-2xl font-extrabold lg:text-5xl text-white'>
+                        <p
+                           className='text-2xl font-extrabold lg:text-5xl  text-white drop-shadow-lg'
+                           style={{ textShadow: '0 0 2px rgba(0, 0, 0, 0.4)' }}
+                        >
                            {`${Math.floor(weather.main.temp)}°C`}
                         </p>
-                        {time && <p className='text-xl md:text-2xl text-white mt-2'>{time}</p>}
+                        {time && (
+                           <p
+                              className='text-xl md:text-2xl text-white mt-2 drop-shadow-2xl'
+                              style={textShadow}
+                           >
+                              {time}
+                           </p>
+                        )}
                      </div>
                   )}
-                  <div className='mt-20 text-white flex flex-col items-center animate-bounce'>
-                     <FaArrowDown className='text-3xl mb-2' /> {/* Down arrow icon */}
-                     <p className='text-lg'>スクロールして始める</p> {/* Text below the icon */}
-                  </div>
+                  <button onClick={handleScroll}>
+                     <div className='mt-20 text-white flex flex-col items-center animate-bounce'>
+                        <FaArrowDown className='text-3xl mb-2' /> {/* Down arrow icon */}
+                        <p className='text-lg drop-shadow-2xl' style={textShadow}>
+                           スクロールして始める
+                        </p>{' '}
+                        {/* Text below the icon */}
+                     </div>
+                  </button>
                </div>
             </div>
          </AspectRatio>
