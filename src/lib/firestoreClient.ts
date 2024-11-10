@@ -21,7 +21,6 @@ export const fetchClothingItems = async (): Promise<ClothingItem[]> => {
          ...(doc.data() as Omit<ClothingItem, 'id'>), // 型を明示的に指定
       }));
 
-      console.log('取得したデータ:', items);
       return items;
    } catch (error) {
       console.error('データの取得に失敗しました:', error);
