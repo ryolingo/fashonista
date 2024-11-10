@@ -36,22 +36,18 @@ const Welcome = () => {
                setTime(localTime);
 
                const weatherCondition = weatherData.weather[0].main.toLowerCase();
-               let searchTerm = 'nature';
+               let weather = 'nature';
 
                if (weatherCondition.includes('clear')) {
-                  searchTerm = 'clear sky';
+                  weather = 'sunny';
                } else if (weatherCondition.includes('cloud')) {
-                  searchTerm = 'cloudy sky';
+                  weather = 'cloudy';
                } else if (weatherCondition.includes('rain')) {
-                  searchTerm = 'rainy sky';
+                  weather = 'rainy';
                }
 
-               // const images = await fetchUnsplashImages(searchTerm);
-               // if (images.length > 0) {
-               //    const randomImage = images[Math.floor(Math.random() * images.length)];
-               //    setBackgroundImage(randomImage.urls.full);
-               // }
-               setBackgroundImage('/images/weather/rainy/rainy1.jpg');
+               const randomImage = Math.floor(Math.random() * 5) + 1;
+               setBackgroundImage(`/images/weather/${weather}/${weather}${randomImage}.jpg`);
             } catch (error) {
                console.error('Error fetching weather or background image:', error);
                setError('Failed to fetch weather or image data.');
