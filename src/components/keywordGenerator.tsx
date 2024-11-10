@@ -13,8 +13,8 @@ const KeywordGenerator = () => {
       setKeywords([]);
 
       try {
-         const response = await axios.post('/api/generateKeywords', { userPreference: preference });
-         let generatedKeywords = response.data.keywords.filter((kw: string) => {
+         const response = await axios.get(`/api/google/gemini/${preference}`);
+         let generatedKeywords = response.data.filter((kw: string) => {
             const trimmedKeyword = kw.trim();
             // Filter out empty keywords and subheadings like "キャラクター:"
             return trimmedKeyword !== '' && !trimmedKeyword.includes('キャラクター');
@@ -29,7 +29,7 @@ const KeywordGenerator = () => {
             generatedKeywords.shift();
          }
 
-         // Limit the number of displayed keywords to 10
+         // Limit the number of displayed keywords to 9
          generatedKeywords = generatedKeywords.slice(0, 9);
 
          if (generatedKeywords.length > 0) {
