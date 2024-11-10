@@ -30,7 +30,7 @@ const KeywordGenerator = () => {
          }
 
          // Limit the number of displayed keywords to 10
-         generatedKeywords = generatedKeywords.slice(0, 10);
+         generatedKeywords = generatedKeywords.slice(0, 9);
 
          if (generatedKeywords.length > 0) {
             setKeywords(generatedKeywords);
