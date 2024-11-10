@@ -1,18 +1,19 @@
 import LogoutButton from '@/components/Logoutbutton';
 import { getCurrentUser } from '@/lib/session';
 import { redirect } from 'next/navigation';
-import { ClothingList } from '@/components/ClothingCardList';
 import MainDisplay from '@/components/Main-display';
 import Header from '@/components/header';
 import DisplayAvator from '@/components/display-avator';
-import { getClothingItems } from '@/lib/firestore';
+import { fetchClothingItems } from '@/lib/firestoreClient';
+import ClothingCardList from '@/components/ClothingCardList';
+import { clothingItem } from '@/types/clothingItem';
 
 export default async function mypage() {
    const currentUser = await getCurrentUser();
    if (!currentUser) {
       redirect('/login');
    }
-   const clothingItems = await getClothingItems();
+
    return (
       <>
          <Header>
@@ -23,7 +24,7 @@ export default async function mypage() {
             />
          </Header>
          <MainDisplay />
-         <ClothingList items={clothingItems} />
+         <ClothingCardList />
       </>
    );
 }

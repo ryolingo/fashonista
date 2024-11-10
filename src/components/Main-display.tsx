@@ -1,54 +1,55 @@
 'use client';
+
 import { useState } from 'react';
 import { useFetchWeather } from '../utils/useFetchWeather';
-import GoogleImageGrid from './GoogleImageGrid';
+import GoogleImageGrid from './GoogleImages/GoogleImageGrid';
 import KeywordGenerator from './keywordGenerator';
-import SearchForm from './SearchForm';
+import SearchForm from './GoogleImages/SearchForm';
 import WeatherUI from './WeatherUI';
+import Welcome from './Welcome';
 import WeatherTimeline from './WetherTimline';
+import axios from 'axios';
+import GoogleSearch from './GoogleImages/GoogleSearch';
 
 export default function MainDisplay() {
-   const [searchTerm, setSearchTerm] = useState('');
-   const [location, setLocation] = useState(''); // ロケーションの管理
-   const [fetchLocation, setFetchLocation] = useState<string | null>(null); // fetchLocationを使用
+   const [location, setLocation] = useState('');
+   const [fetchLocation, setFetchLocation] = useState<string | null>(null);
    const { weatherData, loading, error } = useFetchWeather(fetchLocation || '');
-   const { currentWeather } = useFetchWeather(fetchLocation || ''); // 現在の天気データを取得
+   const { currentWeather } = useFetchWeather(fetchLocation || '');
 
-   // 検索キーワードを設定する関数
-   const handleSearchSubmit = (term: string) => {
-      setSearchTerm(term);
+   // 検索ワードを処理して保存する関数
+
+   // ロケーション検索
+   const handleSearch = (location: string) => {
+      setFetchLocation(location);
    };
 
-   // 検索ボタンが押されたときの動作
-   const handleSearch = () => {
-      setFetchLocation(location); // fetchLocationの状態を更新
-   };
    return (
       <div>
-         <div className='container'>
+         <Welcome />
+         <div id='search' className='container'>
             <WeatherUI
                location={location}
-               setLocation={setLocation} // 場所を入力するための状態設定関数を渡す
-               handleSearch={handleSearch} // 検索ボタンを押したときの動作
-               loading={loading} // ローディング状態を渡す
-               error={error} // エラー状態を渡す
-               currentWeather={currentWeather} // 現在の天気データを渡す
-               weatherData={weatherData} // 天気予報データを渡す
+               setLocation={setLocation}
+               handleSearch={handleSearch}
+               loading={loading}
+               error={error}
+               currentWeather={currentWeather}
+               weatherData={weatherData}
             />
          </div>
          {weatherData && (
-            <div className='container ml-15  mt-8'>
-               <h2 className='text-2xl ml-20 font-extrabold mb-4'>Today's Weather Timeline</h2>
-               <WeatherTimeline weatherData={weatherData} /> {/* タイムラインで天気情報を表示 */}
+            <div className='container mx-auto p-4 mt-8'>
+               <h2 className='text-2xl ml-20 font-extrabold mb-30'>今日の天気のタイムライン</h2>
+               <WeatherTimeline weatherData={weatherData} />
             </div>
          )}
-         <div className='container mx-auto p-4'>
-            <h1 className='text-2xl font-extrabold mb-4'>何を着よう？</h1>
-            <SearchForm onSubmit={handleSearchSubmit} /> {/* onSubmitを正しく渡す */}
+         <div className='container p-4 pt-10 max-w-5xl mx-auto'>
+            <p className='text-lg text-center text-gray-500 mb-8'>
+               OK。次は気になる服を検索キーワードに入力してね。
+            </p>
+            <GoogleSearch />
             <div className='mt-8'>
-               <GoogleImageGrid searchTerm={searchTerm} />
-            </div>
-            <div>
                <KeywordGenerator />
             </div>
          </div>
