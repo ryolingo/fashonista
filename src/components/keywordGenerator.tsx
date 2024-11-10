@@ -45,7 +45,6 @@ const KeywordGenerator = () => {
    };
 
    return (
-
       <div className='flex flex-col items-center p-6 min-h-screen'>
          {/* Header */}
          <header className='w-full text-center mb-6'>
@@ -55,7 +54,6 @@ const KeywordGenerator = () => {
             <p className='text-lg text-gray-500 mt-2'>
                キーワードが思いつかない時は生成AIを使って探してみよう。
             </p>
-
          </header>
 
          {/* Input and Button */}
@@ -70,9 +68,7 @@ const KeywordGenerator = () => {
             <button
                onClick={handleGenerate}
                disabled={loading}
-
                className='w-full py-3 bg-black text-white font-semibold rounded-md shadow-lg hover:bg-gray-900 transition-all disabled:bg-gray-400'
-
             >
                {loading ? '生成中...' : 'キーワードを生成'}
             </button>
@@ -89,7 +85,7 @@ const KeywordGenerator = () => {
                      key={index}
                      className='border border-gray-200 rounded-lg shadow-lg hover:shadow-xl transition-shadow'
                   >
-                     <div className='bg-blue-600 text-white p-2 rounded-t-lg'>
+                     <div className='bg-purple-500 text-white p-2 rounded-t-lg'>
                         <h2 className='text-lg font-semibold'>{`キーワード ${index + 1}`}</h2>
                      </div>
                      <div className='p-4'>

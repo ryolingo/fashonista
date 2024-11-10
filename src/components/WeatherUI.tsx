@@ -27,7 +27,7 @@ export default function Component({
       <div>
          <div className='flex justify-center items-center w-full'>
             <div className='container p-4 max-w-3xl mt-6 mx-auto'>
-               <h2 className='text-4xl font-bold　 text-center mb-2 mt-10 text-primary'>
+               <h2 className='text-4xl font-bold text-center mb-2 mt-10 text-primary'>
                   今日の天気を調べよう
                </h2>
 
