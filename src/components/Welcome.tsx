@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { fetchWeatherWelcome } from '@/utils/fetchWeatherWelcome';
-import { fetchUnsplashImages } from '@/utils/fetchUnsplashImage';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { FaArrowDown } from 'react-icons/fa'; // Importing an icon library
 
