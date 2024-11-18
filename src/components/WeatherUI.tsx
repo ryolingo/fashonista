@@ -1,7 +1,6 @@
 import React from 'react';
-import { Cloud, Droplet, Wind } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { buttonVariants } from '@/components/ui/button';
+import { Droplet, Wind } from 'lucide-react';
+
 import InputPrefecture from './input-prefecture';
 
 interface WeatherUIProps {
