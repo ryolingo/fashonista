@@ -2,13 +2,10 @@
 
 import { useState } from 'react';
 import { useFetchWeather } from '../utils/useFetchWeather';
-import GoogleImageGrid from './GoogleImages/GoogleImageGrid';
 import KeywordGenerator from './keywordGenerator';
-import SearchForm from './GoogleImages/SearchForm';
 import WeatherUI from './WeatherUI';
 import Welcome from './Welcome';
 import WeatherTimeline from './WetherTimline';
-import axios from 'axios';
 import GoogleSearch from './GoogleImages/GoogleSearch';
 
 export default function MainDisplay() {

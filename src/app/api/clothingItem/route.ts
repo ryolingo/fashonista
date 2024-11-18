@@ -1,8 +1,6 @@
 import { authOptions } from '@/lib/auth-options';
 import db from '@/lib/firebase';
 import { clothingItem } from '@/types/clothingItem';
-import { time } from 'console';
-import { Timestamp } from 'firebase-admin/firestore';
 import { addDoc, collection, getDocs, query, serverTimestamp, where } from 'firebase/firestore';
 import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
